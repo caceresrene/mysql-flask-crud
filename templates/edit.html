@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block title %}Edit{% endblock %} {% block content
+%}
+<h1 class="text-center text-xl py-4 font-semibold">Editar registro</h1>
+<form
+	action="/users/update/{{id}}"
+	method="post"
+	class="grid grid-cols-2 gap-2 my-4 p-4"
+>
+	<!-- Le paso el id, para que se este este dentro del diccionario que se le pasa luego a User.update(request.form) -->
+	<input class="hidden" type="text" name="id" id="id" value="{{id}}" />
+
+	<label class="text-center" for="first_name">Nombre:</label>
+	<input
+		value="{{nombre}}"
+		class="p-2 border-2 border-gray-200 rounded focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+		type="text"
+		name="first_name"
+		id="first_name"
+	/>
+
+	<label class="text-center" for="last_name">Apellido:</label>
+	<input
+		value="{{apellido}}"
+		class="p-2 border-2 border-gray-200 rounded focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+		type="text"
+		name="last_name"
+		id="last_name"
+	/>
+
+	<label class="text-center" for="email">Email:</label>
+	<input
+		value="{{email}}"
+		class="p-2 border-2 border-gray-200 rounded focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+		type="text"
+		name="email"
+		id="email"
+	/>
+
+	<div class="flex mt-4 gap-2 col-span-2">
+		<input
+			value="Enviar"
+			type="submit"
+			class="hover:cursor-pointer hover:bg-emerald-400 rounded transition-all bg-emerald-500 flex-auto text-white py-2"
+		/>
+  
+		<a class="hover:bg-blue-400 rounded transition-all bg-blue-500 flex-auto text-white py-2 text-center" href="/users/{{id}}">Show user</a>
+	</div>
+</form>
+{% endblock %}
